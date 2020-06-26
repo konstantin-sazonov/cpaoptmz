@@ -1,3 +1,10 @@
+// (!) INFO
+// Это основной файл, который запускается
+
+// Конечно сегодня я бы сделал ему CLI-интерфейс управления, 
+// а настройки вывел бы как минимум в отдельный JSON-файл который бы проверялся на каждом цикле
+
+
 // Generic Setup
 var fs = require('fs');
 var bodyParser = require('body-parser');
@@ -20,6 +27,8 @@ var evadav = require('./lib/evadav');
 // ----------------LOW-PAYOUT-STRATEGY----------------
 // ---------------------------------------------------
 
+// цикл проверки каждые n-минут
+const interval = 5*min;
 
 // info_card - campaign properties  // активные рекламные кампании
 var campaign_cards = [
@@ -124,8 +133,6 @@ var campaign_cards = [
 	// },
 ]
 
-
-
 // АВТО ПРАВИЛА  -------------------------------------
 var rules_card = {
 
@@ -164,4 +171,4 @@ setInterval((e) => {
 	console.log(rules.logDateCampRule())
 	run();
 	// console.log('test')
-}, 5*min)
+}, interval)
